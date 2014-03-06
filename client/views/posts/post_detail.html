@@ -1,0 +1,19 @@
+<template name="postDetail">
+	<div class="post">
+		<a href="#" class="upvote btn {{upvotedClass}}">+</a>
+		<div class="post-content">
+			<h3>
+				<a href="{{postPagePath this}}">{{title}}</a>
+				<span>{{domain}}</span>
+			</h3>
+			<p>
+				{{pluralize votes "Vote"}},
+				submitted by {{author}},
+				{{#if ownPost}}
+				<a href="{{postEditPath this}}">Edit</a>
+				{{/if}}
+			</p>
+			<div id="message"></div>	
+		</div>
+	</div>
+</template>

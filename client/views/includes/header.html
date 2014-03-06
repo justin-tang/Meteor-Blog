@@ -1,0 +1,45 @@
+<template name="header">
+	<header class="navbar">
+		<div class="navbar-inner">
+			<a class="brand" href="/">Justin's Blog</a>
+			<ul class="nav">
+				<li class="{{activeRouteClass 'home' 'newPosts'}}">
+					<a href="{{homePath}}">New</a>
+				</li>
+				<li class="{{activeRouteClass 'bestPosts'}}">
+					<a href="{{bestPostsPath}}">Best</a>
+				</li>
+			</ul>
+			<ul class="nav pull-right">
+				{{#if currentUser}}
+				<ul class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+						Notifications
+						<span class="badge badge-inverse">{{notificationCount}}</span> <b class="caret"></b>
+					</a>
+					<ul class="dropdown-menu">
+						<li>
+							<a href="/categorySubmit">Submit Category</a>
+						</li>
+						<li>
+							<a href="/postSubmit">Submit Post</a>
+						</li>
+					</ul>
+				</ul>
+<!-- 				<li class="{{activeRouteClass 'categorySubmit'}}">
+					<a href="/categorySubmit">Submit Category</a>
+				</li>
+				<li class="{{activeRouteClass 'postSubmit'}}">
+					<a href="/postSubmit">Submit Post</a>
+				</li> -->
+				{{/if}}
+				<li class="dropdown">{{> notifications}}</li>
+				<li>{{loginButtons}}</li>
+			</ul>
+		</div>
+	</header>
+	<div style="display:none;">
+		<textarea name="message"></textarea>
+	</div>
+	{{editor}}
+</template>
