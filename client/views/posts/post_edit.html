@@ -2,29 +2,41 @@
 	{{#with post}}
 	<form class="main">
 		<div class="control-group">
-			<label class="control-label" for="title">Title</label>
+			<label class="control-label" for="title">标题</label>
 			<div class="controls">
-				<input name="title" type="text" value="{{title}}" placeholder="
-Name your post"/>
+				<input name="title" type="text" value="{{title}}" placeholder="Name your post"/>
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label" for="title">Content</label>
+			<label class="control-label" for="category">分类</label>
 			<div class="controls">
-				<textarea name="message" style="width:800px;height:400px;visibility:hidden;">{{showContent}}</textarea>
+				<select name="category">
+					{{#each categorys}}
+						{{#if ownCategory}}
+							<option value="{{_id}}" selected="selected">{{name}}</option>
+						{{else}}
+							<option value="{{_id}}">{{name}}</option>
+						{{/if}}
+				  {{/each}}
+				</select>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="content">内容</label>
+			<div class="controls">
+				<textarea name="content" style="width:800px;height:400px;visibility:hidden;">{{showContent}}</textarea>
 				{{editor}}
 			</div>
 		</div>
 		<div class="control-group">
 			<div class="controls">
-				<input type="submit" value="Submit" class="btn btn-primary subm
-it"/>
+				<input type="submit" value="Submit" class="btn btn-primary submit"/>
 			</div>
 		</div>
 		<hr/>
 		<div class="control-group">
 			<div class="controls">
-				<a class="btn btn-danger delete" href="#">Delete post</a>
+				<a class="btn btn-danger delete" href="#">删除</a>
 			</div>
 		</div>
 	</form>

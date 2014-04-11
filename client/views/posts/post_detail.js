@@ -19,6 +19,10 @@ Template.postDetail.helpers({
 		} else {
 			return 'disabled';
 		}
+	},
+	categoryName: function(){
+		var category = Categorys.findOne(this.categoryId);
+		return category.name;
 	}
 });
 
@@ -47,7 +51,7 @@ Template.postDetail.rendered = function() {
 	});
 
 	//add html
-	$("#message").html(instance.data.message);
+	$("#content").html(instance.data.content);
 };
 
 Template.postDetail.events({

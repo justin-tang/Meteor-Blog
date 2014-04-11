@@ -4,14 +4,21 @@ Template.postEdit.helpers({
 	},
 	editor: function() {
 		KindEditor.ready(function(K) {
-			K.create('textarea[name="message"]', {
+			K.create('textarea[name="content"]', {
 				allowFileManager : true
 			});
 		});
 	},
 	showContent: function(){
 		var post = Posts.findOne(Session.get('currentPostId'));
-		return post.message;
+		return post.content;
+	},
+	categorys: function(){
+		return Categorys.find();
+	},
+	ownCategory: function(){
+		var post = Posts.findOne(Session.get('currentPostId'));
+		return this._id == post.categoryId;
 	}
 });
 Template.postEdit.events({
@@ -19,8 +26,9 @@ Template.postEdit.events({
 		e.preventDefault();
 		var currentPostId = Session.get('currentPostId');
 		var postProperties = {
-			url: $(e.target).find('[name=url]').val(),
-			title: $(e.target).find('[name=title]').val()
+			title: $(event.target).find('[name=title]').val(),
+			categoryId: $(event.target).find('[name=category]').val(),
+			content: $(event.target).find('[name=content]').val()
 		}
 		Posts.update(currentPostId, {
 			$set: postProperties
@@ -45,7 +53,7 @@ Template.postEdit.events({
 
 Template.postEdit.rendered = function() {
 	KindEditor.ready(function(K) {
-		K.create('textarea[name="message"]', {
+		K.create('textarea[name="content"]', {
 			allowFileManager : true
 		});
 	});

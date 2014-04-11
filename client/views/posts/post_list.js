@@ -26,11 +26,19 @@ Template.postsList.helpers({
 				sort: this.sort,
 				limit: this.handle.limit()
 			};
-		return Posts.find({}, options).map(function(post) {
-			post._rank = i;
-			i += 1;
-			return post;
-		});
+		if(this.categoryId == undefined){
+			return Posts.find({}, options).map(function(post) {
+				post._rank = i;
+				i += 1;
+				return post;
+			});
+		}else{
+			return Posts.find({"categoryId":this.categoryId}, options).map(function(post) {
+				post._rank = i;
+				i += 1;
+				return post;
+			});
+		}
 	},
 	posts: function() {
 		return Posts.find({}, {

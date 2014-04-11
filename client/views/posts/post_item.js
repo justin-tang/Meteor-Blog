@@ -19,8 +19,11 @@ Template.postItem.helpers({
 		} else {
 			return 'disabled';
 		}
+	},
+	categoryName: function(){
+		var category = Categorys.findOne(this.categoryId);
+		return category.name;
 	}
-
 });
 
 Template.postItem.rendered = function() {

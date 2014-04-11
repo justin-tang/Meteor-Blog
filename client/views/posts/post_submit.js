@@ -2,9 +2,9 @@ Template.postSubmit.events({
 	'submit form': function(event) {
 		event.preventDefault();
 		var post = {
-			url: $(event.target).find('[name=url]').val(),
 			title: $(event.target).find('[name=title]').val(),
-			message: $(event.target).find('[name=message]').val()
+			categoryId: $(event.target).find('[name=category]').val(),
+			content: $(event.target).find('[name=content]').val()
 		}
 		Meteor.call('post', post, function(error, id) {
 			if (error) {
@@ -23,16 +23,19 @@ Template.postSubmit.events({
 Template.postSubmit.helpers({
 	editor: function() {
 		KindEditor.ready(function(K) {
-			K.create('textarea[name="message"]', {
+			K.create('textarea[name="content"]', {
 				allowFileManager : true
 			});
-		});
+		})
+	},
+	categorys: function(){
+		return Categorys.find();
 	}
 });
 
 Template.postSubmit.rendered = function() {
 	KindEditor.ready(function(K) {
-		K.create('textarea[name="message"]', {
+		K.create('textarea[name="content"]', {
 			allowFileManager : true
 		});
 	});

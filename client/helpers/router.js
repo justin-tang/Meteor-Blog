@@ -18,7 +18,13 @@ Meteor.Router.add({
 		}
 	},
 	'/postSubmit': 'postSubmit',
-	'/categorySubmit': 'categorySubmit'
+	'/categorySubmit': 'categorySubmit',
+	'/:_id': {
+		to: 'categoryPosts',
+		and: function(id) {
+			Session.set('currentCategoryId', id);
+		}
+	},
 });
 
 Meteor.Router.filters({

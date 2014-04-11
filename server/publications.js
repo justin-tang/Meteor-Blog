@@ -1,7 +1,5 @@
 Meteor.publish('categorys', function() {
-	return Categorys.find({
-		userId: this.userId
-	});
+	return Categorys.find();
 });
 Meteor.publish('posts', function(categoryId) {
 	return Posts.find({}, {

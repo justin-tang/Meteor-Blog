@@ -1,11 +1,11 @@
 Categorys = new Meteor.Collection('categorys');
 
+/*
 Categorys.allow({
 	update: ownsDocument,
 	remove: ownsDocument
 });
 
-/*
 Categorys.deny({
 	update: function(userId, category, fieldNames) {
 		// may only edit the following three fields:

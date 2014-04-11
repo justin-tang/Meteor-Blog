@@ -1,6 +1,6 @@
 <template name="notifications">
 	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-		Notifications
+		消息
 		{{#if notificationCount}}
 			<span class="badge badge-inverse">{{notificationCount}}</span>
 		{{/if}} 
@@ -13,7 +13,7 @@
 			{{/each}}
 		{{else}}
 			<li>
-				<span>No Notifications</span>
+				<span>没有消息</span>
 			</li>
 		{{/if}}
 	</ul>
@@ -21,7 +21,7 @@
 <template name="notification">
 	<li>
 		<a href="{{postPagePath postId}}"> <strong>{{commenterName}}</strong>
-			commented on your post
+			评论你的文章
 		</a>
 	</li>
 </template>

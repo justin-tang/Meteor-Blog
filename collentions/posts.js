@@ -5,12 +5,13 @@ Posts.allow({
 	remove: ownsDocument
 });
 
-Posts.deny({
+/*Posts.deny({
 	update: function(userId, post, fieldNames) {
 		// may only edit the following three fields:
-		return (_.without(fieldNames, 'url', 'title').length > 0);
+		console.log(fieldNames);
+		return (_.without(fieldNames, 'title').length > 0);
 	}
-});
+});*/
 
 Meteor.methods({
 	post: function(postAttributes) {
@@ -35,7 +36,7 @@ Meteor.methods({
 		}
 
 		// pick out the whitelisted keys
-		var post = _.extend(_.pick(postAttributes, 'categoryId', 'url', 'title', 'message'), {
+		var post = _.extend(_.pick(postAttributes, 'categoryId', 'url', 'title', 'content'), {
 			userId: user._id,
 			author: user.username,
 			submitted: new Date().getTime(),

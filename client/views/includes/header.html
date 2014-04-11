@@ -1,39 +1,24 @@
 <template name="header">
 	<header class="navbar">
 		<div class="navbar-inner">
-			<a class="brand" href="/">Justin's Blog</a>
-			<ul class="nav">
-				<li class="{{activeRouteClass 'home' 'newPosts'}}">
-					<a href="{{homePath}}">New</a>
-				</li>
-				<li class="{{activeRouteClass 'bestPosts'}}">
-					<a href="{{bestPostsPath}}">Best</a>
-				</li>
-			</ul>
+			<a class="brand" href="/">博客系统</a>
 			<ul class="nav pull-right">
 				{{#if currentUser}}
-				<ul class="dropdown">
+				<li class="dropdown">{{> notifications}}</li>
+				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-						Notifications
-						<span class="badge badge-inverse">{{notificationCount}}</span> <b class="caret"></b>
+						控制面板<b class="caret"></b>
 					</a>
 					<ul class="dropdown-menu">
 						<li>
-							<a href="/categorySubmit">Submit Category</a>
+							<a href="/categorySubmit">添加分类</a>
 						</li>
 						<li>
-							<a href="/postSubmit">Submit Post</a>
+							<a href="/postSubmit">写文章</a>
 						</li>
 					</ul>
-				</ul>
-<!-- 				<li class="{{activeRouteClass 'categorySubmit'}}">
-					<a href="/categorySubmit">Submit Category</a>
 				</li>
-				<li class="{{activeRouteClass 'postSubmit'}}">
-					<a href="/postSubmit">Submit Post</a>
-				</li> -->
 				{{/if}}
-				<li class="dropdown">{{> notifications}}</li>
 				<li>{{loginButtons}}</li>
 			</ul>
 		</div>

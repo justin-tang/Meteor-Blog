@@ -1,0 +1,21 @@
+<template name="categoryList">
+  <div class="navbar">
+    <div class="navbar-inner">
+      <ul class="nav">
+        <li class="{{activeRouteClass 'home' 'newPosts'}}"><a href="/">所有</a></li>
+	      {{#each categorys}}
+	      <li class="{{activeCategoryClass _id}}"><a href="{{categoryPostsPath this}}">{{name}}</a></li>
+	      {{/each}}
+      </ul>
+      <ul class="nav pull-right">
+				<li><a>排序：</a></li>
+				<li class="{{activeRouteClass 'home' 'newPosts'}}">
+					<a href="{{homePath}}">最新</a>
+				</li>
+				<li class="{{activeRouteClass 'bestPosts'}}">
+					<a href="{{bestPostsPath}}">好评</a>
+				</li>
+			</ul>
+    </div>
+  </div>
+</template>

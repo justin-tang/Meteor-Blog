@@ -15,7 +15,7 @@ if (Posts.find().count() === 0) {
 	});
 	var sacha = Meteor.users.findOne(sachaId);
 	var justinId = Categorys.insert({
-		name: 'justin',
+		name: 'Meteor',
 		userId: sacha._id,
 		author: sacha.profile.name,
 		postsCount: 3
